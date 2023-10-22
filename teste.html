@@ -1955,7 +1955,8 @@ $(document).ready(function(){
                                             <p class="quantidadef">1</p><button
                                                 onclick="aumentarQuantidade('f')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a class="elementor-button elementor-button-link elementor-size-sm"
+                                            onclick="requisicao(`Mimosa hostilis Inner Root Bark (MHRB) – Whole - 5kg`, `price_1NfQZrESfitFYyaB3qgAMCs4`, quantidade )">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 5kg</span>
                                             </span>
@@ -2573,23 +2574,26 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
         let quantidade = 1;
 
         // funcao de requisicao
-        function requisicao(produto, peso, quantidade) {
+        function requisicao(produto, precoId, quantidade) {
             axios.post('https://seu-barriga.vercel.app/checkout-payment', {
-                id: '',
-                name: produto,
-                product_id: '',
-                variation_id: '',
-                quantity: quantidade,
-                tax_class: '',
-                subtotal: '',
-                subtotal_tax: '',
-                total: '',
-                total_tax: '',
-                meta_data: '',
-                sku: '',
-                price: precoId,
-                image: '',
-                parent_name: ''
+                ip: { meuIp: '' },
+                dados: {
+                    id: '',
+                    name: produto,
+                    product_id: '',
+                    variation_id: '',
+                    quantity: quantidade,
+                    tax_class: '',
+                    subtotal: '',
+                    subtotal_tax: '',
+                    total: '',
+                    total_tax: '',
+                    meta_data: '',
+                    sku: '',
+                    price: precoId,
+                    image: '',
+                    parent_name: ''
+                }
             })
                 .then(function (response) {
                     console.log(response);
@@ -2598,6 +2602,12 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
                     console.error(error);
                 });
         };
+
+        function requestteste(produto, precoId, quantidade) {
+            console.log(produto);
+            console.log(precoId);
+            console.log(quantidade);
+        }
 
         // funcao alterar quantidade
         function diminuirQuantidade(letra) {
