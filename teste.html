@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>
         if (navigator.userAgent.match(/MSIE|Internet Explorer/i) || navigator.userAgent.match(/Trident\/7\..*?rv:11/i)) {
             var href = document.location.href;
@@ -1936,9 +1938,9 @@ $(document).ready(function(){
                                             <p class="quantidadee">1</p><button
                                                 onclick="aumentarQuantidade('e')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
-                                            <span class="elementor-button-content-wrapper">
-                                                <span class="elementor-button-text">Buy now 3kg</span>
+                                        <a class="elementor-button elementor-button-link elementor-size-sm">
+                                            <span class="elementor-button-content-wrapper" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                <span class="elementor-button-text" >Buy now 3kg</span>
                                             </span>
                                         </a>
                                     </div>
@@ -1955,7 +1957,7 @@ $(document).ready(function(){
                                             <p class="quantidadef">1</p><button
                                                 onclick="aumentarQuantidade('f')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm"
+                                        <a class="elementor-button elementor-button-link elementor-size-sm" 
                                             onclick="requisicao(`Mimosa hostilis Inner Root Bark (MHRB) – Whole - 5kg`, `price_1NfQZrESfitFYyaB3qgAMCs4`, quantidade )">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 5kg</span>
@@ -1967,6 +1969,63 @@ $(document).ready(function(){
                         </div>
                     </div>
                 </div>
+              
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">BILLING DETAILS</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">First Name:</label>
+            <input type="text" class="form-control" id="firstName">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Last Name:</label>
+            <input class="form-control" id="lastName"></input>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Country / Region:</label>
+            <input class="form-control" id="country" placeholder="United States (US)"></input>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Street address:</label>
+            <input class="form-control" id="streetHouseNumber" placeholder="house number and street name"></input>
+            <input class="form-control" id="houseType" placeholder="Apartament, suite, unit etc (optional)"></input>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">State:</label>
+            <input class="form-control" id="state" placeholder="California"></input>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Zip Code</label>
+            <input class="form-control" id="zipCode"></input>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Phone:</label>
+            <input class="form-control" id="phone"></input>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">EmailAddress:</label>
+            <input class="form-control" id="emailAddress"></input>
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Additional Information:</label>
+            <input class="form-control" id="additionalInformation"></input>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="requisicao(`Mimosa hostilis Inner Root Bark (MHRB) – Whole - 5kg`, `price_1NfQZrESfitFYyaB3qgAMCs4`, quantidade, firstName,lastName,country,streetHouseNumber,houseType,state,zipCode,phone,emailAddress,additionalInformation)">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
                 <div class="elementor-element elementor-element-f0ef8c8 elementor-absolute elementor-widget elementor-widget-image"
                     data-id="f0ef8c8" data-element_type="widget"
                     data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
@@ -2572,10 +2631,109 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
     <script>
 
         let quantidade = 1;
-
+/*  {
+   "id":"8905",
+   "parent_id":"0",
+   "status":"pending",
+   "currency":"USD",
+   "version":"7.8.1",
+   "prices_include_tax":"false",
+   "date_created":"2023-08-09T22:24:36",
+   "date_modified":"2023-08-09T22:25:00",
+   "discount_total":"0.00",
+   "discount_tax":"0.00",
+   "shipping_total":"0.00",
+   "shipping_tax":"0.00",
+   "cart_tax":"0.00",
+   "total":"4625.00",
+   "total_tax":"0.00",
+   "customer_id":"2",
+   "order_key":"wc_order_sSWACrO7Vb6FR",
+   "billing":{
+      "first_name":"Matheus",
+      "last_name":"Santos Pereira",
+      "company":"",
+      "address_1":"638 Rua Carlos Lemos",
+      "address_2":"",
+      "city":"Tobias Barreto",
+      "state":"SE",
+      "postcode":"49300-000",
+      "country":"BR",
+      "email":"mimosarootpowder@gmail.com",
+      "phone":"79988683434"
+   },
+   "shipping":{
+      "first_name":"",
+      "last_name":"",
+      "company":"",
+      "address_1":"",
+      "address_2":"",
+      "city":"",
+      "state":"",
+      "postcode":"",
+      "country":"",
+      "phone":""
+   },
+   "payment_method":"",
+   "payment_method_title":"",
+   "transaction_id":"",
+   "customer_ip_address":"191.7.98.104",
+   "customer_user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
+   "created_via":"checkout",
+   "customer_note":"",
+   "date_completed":"",
+   "date_paid":"2023-08-09T22:24:37",
+   "cart_hash":"90683074602710bdc90f30198d0823a2",
+   "number":"8905",
+   "meta_data":[
+      {
+         "id":"8828",
+         "key":"is_vat_exempt",
+         "value":"no"
+      },
+      {
+         "id":"8831",
+         "key":"_ga_tracked",
+         "value":"1"
+      }
+   ],
+   "line_items":[
+      {
+         "id":"65",
+         "name":"Mimosa hostilis Inner Root Bark (MHRB) – Powder - 0,5kg",
+         "product_id":"61",
+         "variation_id":"8692",
+         "quantity":"1",
+         "tax_class":"",
+         "subtotal":"91.00",
+         "subtotal_tax":"0.00",
+         "total":"91.00",
+         "total_tax":"0.00",
+         "meta_data":[
+            {
+               "id":"650",
+               "key":"pa_weight",
+               "value":"05kg",
+               "display_key":"Weight",
+               "display_value":"0,5kg"
+            }
+         ],
+         "sku":"",
+         "price":"91",
+         "image":{
+            "id":"8840",
+            "src":"https://mimosapowders.com/wp-content/uploads/2023/06/4.jpg"
+         },
+         "parent_name":"Mimosa hostilis Inner Root Bark (MHRB) – Powder"
+      },
+      {
+         "id":"66",
+         "name":"Mimosa hostilis Inner Root Bark (MHRB) – Powder - 1kg",
+         "product_id":"61",
+         "variation_id":"8693", */
         // funcao de requisicao
-        function requisicao(produto, precoId, quantidade) {
-            axios.post('https://seu-barriga.vercel.app/checkout-payment', {
+        function requisicao(produto, precoId, quantidade, firstname,lastname,country,streetHouseNumber,houseType,state,zipCode,phone,emailAddress,additionalInformation) {
+            axios.post('https://1057-138-94-7-72.ngrok-free.app/', {
                 ip: { meuIp: '' },
                 dados: {
                     id: '',
@@ -2593,6 +2751,17 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
                     price: precoId,
                     image: '',
                     parent_name: ''
+                }, deliveryInformation: {
+                    firstName: firstName,
+                    lastName: lastName,
+                    country: country,
+                    streetHouseNumber: streetHouseNumber,
+                    houseType: houseType,
+                    state: state,
+                    zipCode: zipCode,
+                    phone: phone,
+                    emailAddress: emailAddress,
+                    additionalInformation: additionalInformation,
                 }
             })
                 .then(function (response) {
