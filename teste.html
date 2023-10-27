@@ -3,8 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <script>
         if (navigator.userAgent.match(/MSIE|Internet Explorer/i) || navigator.userAgent.match(/Trident\/7\..*?rv:11/i)) {
             var href = document.location.href;
@@ -422,6 +425,13 @@
     <link rel="alternate" type="application/rss+xml" title="MHRB Brazilian &raquo; Comments Feed"
         href="https://mhrbbrazilian.shop/?feed=comments-rss2" />
     <style>
+        #buttonBuy{
+            color: white;
+        }
+        #buttonBuy:hover{
+            cursor: pointer;
+            opacity: 0.8;
+        }
         img.wp-smiley,
         img.emoji {
             display: inline !important;
@@ -1343,7 +1353,8 @@ $(document).ready(function(){
                                             <p class="quantidadepo05">1</p><button
                                                 onclick="aumentarQuantidade('po05')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Powder - 0,5kg`, `price_1NfQInESfitFYyaB5YKhTIRA`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 0,5kg</span>
                                             </span>
@@ -1362,7 +1373,8 @@ $(document).ready(function(){
                                             <p class="quantidadepo1">1</p><button
                                                 onclick="aumentarQuantidade('po1')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Powder - 1kg`, `price_1NfQL1ESfitFYyaBbPCyMRXI`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 1kg</span>
                                             </span>
@@ -1381,7 +1393,8 @@ $(document).ready(function(){
                                             <p class="quantidadepo15">1</p><button
                                                 onclick="aumentarQuantidade('po15')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Powder - 1.5kg`, `price_1NfQLfESfitFYyaBJicNY5cB`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 1,5kg</span>
                                             </span>
@@ -1400,7 +1413,8 @@ $(document).ready(function(){
                                             <p class="quantidadepo2">1</p><button
                                                 onclick="aumentarQuantidade('po2')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Powder - 2kg`, `price_1NfQMbESfitFYyaBDH0Ou7Ug`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 2kg</span>
                                             </span>
@@ -1419,7 +1433,8 @@ $(document).ready(function(){
                                             <p class="quantidadepo3">1</p><button
                                                 onclick="aumentarQuantidade('po3')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Powder - 3kg`, `price_1NfQNAESfitFYyaBGmVjmWwp`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 3kg</span>
                                             </span>
@@ -1438,7 +1453,8 @@ $(document).ready(function(){
                                             <p class="quantidadepo5">1</p><button
                                                 onclick="aumentarQuantidade('po5')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Powder - 5kg`, `price_1NfQNcESfitFYyaBQePkvxSN`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 5kg</span>
                                             </span>
@@ -1614,7 +1630,8 @@ $(document).ready(function(){
                                             <p class="quantidadesh05">1</p><button
                                                 onclick="aumentarQuantidade('sh05')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Shredded - 0,5kg`, `price_1NfQRBESfitFYyaBrZzoAKf5`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 0,5kg</span>
                                             </span>
@@ -1633,7 +1650,8 @@ $(document).ready(function(){
                                             <p class="quantidadesh1">1</p><button
                                                 onclick="aumentarQuantidade('sh1')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Shredded - 1kg`, `price_1NfQRzESfitFYyaBDqhSAER9`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 1kg</span>
                                             </span>
@@ -1652,7 +1670,8 @@ $(document).ready(function(){
                                             <p class="quantidadesh15">1</p><button
                                                 onclick="aumentarQuantidade('sh15')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Shredded - 1.5kg`, `price_1NfQTPESfitFYyaBMj3MulPg`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 1,5kg</span>
                                             </span>
@@ -1671,7 +1690,8 @@ $(document).ready(function(){
                                             <p class="quantidadesh2">1</p><button
                                                 onclick="aumentarQuantidade('sh2')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Shredded - 2kg`, `price_1NfQUBESfitFYyaBzZlUun3G`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 2kg</span>
                                             </span>
@@ -1690,7 +1710,8 @@ $(document).ready(function(){
                                             <p class="quantidadesh3">1</p><button
                                                 onclick="aumentarQuantidade('sh3')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Shredded - 3kg`, `price_1NfQUhESfitFYyaB97nVzZsd`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 3kg</span>
                                             </span>
@@ -1709,7 +1730,8 @@ $(document).ready(function(){
                                             <p class="quantidadesh5">1</p><button
                                                 onclick="aumentarQuantidade('sh5')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                        onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Shredded - 5kg`, `price_1NfQVPESfitFYyaBTMUOIa7H`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 5kg</span>
                                             </span>
@@ -1862,7 +1884,9 @@ $(document).ready(function(){
                                             <p class="quantidadea">1</p><button
                                                 onclick="aumentarQuantidade('a')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Whole - 0,5kg`, `price_1NfQWpESfitFYyaBviGp5BGC`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 0,5kg</span>
                                             </span>
@@ -1881,7 +1905,9 @@ $(document).ready(function(){
                                             <p class="quantidadeb">1</p><button
                                                 onclick="aumentarQuantidade('b')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Whole - 1kg`, `price_1NfQXbESfitFYyaB0Qpf87kg`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 1kg</span>
                                             </span>
@@ -1900,9 +1926,11 @@ $(document).ready(function(){
                                             <p class="quantidadec">1</p><button
                                                 onclick="aumentarQuantidade('c')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Whole - 1.5kg`, `price_1NfQY5ESfitFYyaB4wDDOUUB`)">
                                             <span class="elementor-button-content-wrapper">
-                                                <span class="elementor-button-text">Buy now 1,5kgkk</span>
+                                                <span class="elementor-button-text">Buy now 1,5kg</span>
                                             </span>
                                         </a>
                                     </div>
@@ -1919,7 +1947,9 @@ $(document).ready(function(){
                                             <p class="quantidaded">1</p><button
                                                 onclick="aumentarQuantidade('d')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Whole - 2kg`, `price_1NfQYhESfitFYyaBRvtVyp6M`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 2kg</span>
                                             </span>
@@ -1938,9 +1968,12 @@ $(document).ready(function(){
                                             <p class="quantidadee">1</p><button
                                                 onclick="aumentarQuantidade('e')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm">
-                                            <span class="elementor-button-content-wrapper" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                <span class="elementor-button-text" >Buy now 3kg</span>
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Whole - 3kg`, `price_1NfQZHESfitFYyaBTPcb484F`)">
+                                            <span class="elementor-button-content-wrapper" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">
+                                                <span class="elementor-button-text">Buy now 3kg</span>
                                             </span>
                                         </a>
                                     </div>
@@ -1957,8 +1990,9 @@ $(document).ready(function(){
                                             <p class="quantidadef">1</p><button
                                                 onclick="aumentarQuantidade('f')">+</button>
                                         </div>
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" 
-                                            onclick="requisicao(`Mimosa hostilis Inner Root Bark (MHRB) – Whole - 5kg`, `price_1NfQZrESfitFYyaB3qgAMCs4`, quantidade )">
+                                        <a id="buttonBuy" class="elementor-button elementor-button-link elementor-size-sm"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                            onclick="salvarProdutos(`Mimosa H. Inner Root Bark (MHRB) – Whole - 5kg`, `price_1NfQZrESfitFYyaB3qgAMCs4`)">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text">Buy now 5kg</span>
                                             </span>
@@ -1969,63 +2003,68 @@ $(document).ready(function(){
                         </div>
                     </div>
                 </div>
-              
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">BILLING DETAILS</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">First Name:</label>
-            <input type="text" class="form-control" id="firstName">
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Last Name:</label>
-            <input class="form-control" id="lastName"></input>
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Country / Region:</label>
-            <input class="form-control" id="country" placeholder="United States (US)"></input>
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Street address:</label>
-            <input class="form-control" id="streetHouseNumber" placeholder="house number and street name"></input>
-            <input class="form-control" id="houseType" placeholder="Apartament, suite, unit etc (optional)"></input>
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">State:</label>
-            <input class="form-control" id="state" placeholder="California"></input>
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Zip Code</label>
-            <input class="form-control" id="zipCode"></input>
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Phone:</label>
-            <input class="form-control" id="phone"></input>
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">EmailAddress:</label>
-            <input class="form-control" id="emailAddress"></input>
-          </div>
-          <div class="mb-3">
-            <label for="message-text" class="col-form-label">Additional Information:</label>
-            <input class="form-control" id="additionalInformation"></input>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="requisicao(`Mimosa hostilis Inner Root Bark (MHRB) – Whole - 5kg`, `price_1NfQZrESfitFYyaB3qgAMCs4`, quantidade, firstName,lastName,country,streetHouseNumber,houseType,state,zipCode,phone,emailAddress,additionalInformation)">Send</button>
-      </div>
-    </div>
-  </div>
-</div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">BILLING DETAILS</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="formularioEndereco">
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label">First Name:</label>
+                                        <input type="text" class="form-control" id="firstName">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message-text" class="col-form-label">Last Name:</label>
+                                        <input class="form-control" id="lastName"></input>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message-text" class="col-form-label">Country / Region:</label>
+                                        <input class="form-control" id="country"
+                                            placeholder="United States (US)"></input>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message-text" class="col-form-label">Street address:</label>
+                                        <input class="form-control" id="streetHouseNumber"
+                                            placeholder="house number and street name"></input>
+                                        <input class="form-control" id="houseType"
+                                            placeholder="Apartament, suite, unit etc (optional)"></input>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message-text" class="col-form-label">State:</label>
+                                        <input class="form-control" id="state" placeholder="California"></input>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message-text" class="col-form-label">Zip Code</label>
+                                        <input class="form-control" id="zipCode"></input>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message-text" class="col-form-label">Phone:</label>
+                                        <input class="form-control" id="phone"></input>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message-text" class="col-form-label">EmailAddress:</label>
+                                        <input class="form-control" id="emailAddress"></input>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message-text" class="col-form-label">Additional Information:</label>
+                                        <input class="form-control" id="additionalInformation"></input>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" id='buttonRequest'onclick="requisicao()">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="elementor-element elementor-element-f0ef8c8 elementor-absolute elementor-widget elementor-widget-image"
                     data-id="f0ef8c8" data-element_type="widget"
                     data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
@@ -2631,141 +2670,170 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
     <script>
 
         let quantidade = 1;
-/*  {
-   "id":"8905",
-   "parent_id":"0",
-   "status":"pending",
-   "currency":"USD",
-   "version":"7.8.1",
-   "prices_include_tax":"false",
-   "date_created":"2023-08-09T22:24:36",
-   "date_modified":"2023-08-09T22:25:00",
-   "discount_total":"0.00",
-   "discount_tax":"0.00",
-   "shipping_total":"0.00",
-   "shipping_tax":"0.00",
-   "cart_tax":"0.00",
-   "total":"4625.00",
-   "total_tax":"0.00",
-   "customer_id":"2",
-   "order_key":"wc_order_sSWACrO7Vb6FR",
-   "billing":{
-      "first_name":"Matheus",
-      "last_name":"Santos Pereira",
-      "company":"",
-      "address_1":"638 Rua Carlos Lemos",
-      "address_2":"",
-      "city":"Tobias Barreto",
-      "state":"SE",
-      "postcode":"49300-000",
-      "country":"BR",
-      "email":"mimosarootpowder@gmail.com",
-      "phone":"79988683434"
-   },
-   "shipping":{
-      "first_name":"",
-      "last_name":"",
-      "company":"",
-      "address_1":"",
-      "address_2":"",
-      "city":"",
-      "state":"",
-      "postcode":"",
-      "country":"",
-      "phone":""
-   },
-   "payment_method":"",
-   "payment_method_title":"",
-   "transaction_id":"",
-   "customer_ip_address":"191.7.98.104",
-   "customer_user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
-   "created_via":"checkout",
-   "customer_note":"",
-   "date_completed":"",
-   "date_paid":"2023-08-09T22:24:37",
-   "cart_hash":"90683074602710bdc90f30198d0823a2",
-   "number":"8905",
-   "meta_data":[
-      {
-         "id":"8828",
-         "key":"is_vat_exempt",
-         "value":"no"
-      },
-      {
-         "id":"8831",
-         "key":"_ga_tracked",
-         "value":"1"
-      }
-   ],
-   "line_items":[
-      {
-         "id":"65",
-         "name":"Mimosa hostilis Inner Root Bark (MHRB) – Powder - 0,5kg",
-         "product_id":"61",
-         "variation_id":"8692",
-         "quantity":"1",
-         "tax_class":"",
-         "subtotal":"91.00",
-         "subtotal_tax":"0.00",
-         "total":"91.00",
-         "total_tax":"0.00",
-         "meta_data":[
-            {
-               "id":"650",
-               "key":"pa_weight",
-               "value":"05kg",
-               "display_key":"Weight",
-               "display_value":"0,5kg"
-            }
-         ],
-         "sku":"",
-         "price":"91",
-         "image":{
-            "id":"8840",
-            "src":"https://mimosapowders.com/wp-content/uploads/2023/06/4.jpg"
-         },
-         "parent_name":"Mimosa hostilis Inner Root Bark (MHRB) – Powder"
-      },
-      {
-         "id":"66",
-         "name":"Mimosa hostilis Inner Root Bark (MHRB) – Powder - 1kg",
-         "product_id":"61",
-         "variation_id":"8693", */
+        let produto;
+        let preco;
+
+        /*  {
+           "id":"8905",
+           "parent_id":"0",
+           "status":"pending",
+           "currency":"USD",
+           "version":"7.8.1",
+           "prices_include_tax":"false",
+           "date_created":"2023-08-09T22:24:36",
+           "date_modified":"2023-08-09T22:25:00",
+           "discount_total":"0.00",
+           "discount_tax":"0.00",
+           "shipping_total":"0.00",
+           "shipping_tax":"0.00",
+           "cart_tax":"0.00",
+           "total":"4625.00",
+           "total_tax":"0.00",
+           "customer_id":"2",
+           "order_key":"wc_order_sSWACrO7Vb6FR",
+           "billing":{
+              "first_name":"Matheus",
+              "last_name":"Santos Pereira",
+              "company":"",
+              "address_1":"638 Rua Carlos Lemos",
+              "address_2":"",
+              "city":"Tobias Barreto",
+              "state":"SE",
+              "postcode":"49300-000",
+              "country":"BR",
+              "email":"mimosarootpowder@gmail.com",
+              "phone":"79988683434"
+           },
+           "shipping":{
+              "first_name":"",
+              "last_name":"",
+              "company":"",
+              "address_1":"",
+              "address_2":"",
+              "city":"",
+              "state":"",
+              "postcode":"",
+              "country":"",
+              "phone":""
+           },
+           "payment_method":"",
+           "payment_method_title":"",
+           "transaction_id":"",
+           "customer_ip_address":"191.7.98.104",
+           "customer_user_agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
+           "created_via":"checkout",
+           "customer_note":"",
+           "date_completed":"",
+           "date_paid":"2023-08-09T22:24:37",
+           "cart_hash":"90683074602710bdc90f30198d0823a2",
+           "number":"8905",
+           "meta_data":[
+              {
+                 "id":"8828",
+                 "key":"is_vat_exempt",
+                 "value":"no"
+              },
+              {
+                 "id":"8831",
+                 "key":"_ga_tracked",
+                 "value":"1"
+              }
+           ],
+           "line_items":[
+              {
+                 "id":"65",
+                 "name":"Mimosa hostilis Inner Root Bark (MHRB) – Powder - 0,5kg",
+                 "product_id":"61",
+                 "variation_id":"8692",
+                 "quantity":"1",
+                 "tax_class":"",
+                 "subtotal":"91.00",
+                 "subtotal_tax":"0.00",
+                 "total":"91.00",
+                 "total_tax":"0.00",
+                 "meta_data":[
+                    {
+                       "id":"650",
+                       "key":"pa_weight",
+                       "value":"05kg",
+                       "display_key":"Weight",
+                       "display_value":"0,5kg"
+                    }
+                 ],
+                 "sku":"",
+                 "price":"91",
+                 "image":{
+                    "id":"8840",
+                    "src":"https://mimosapowders.com/wp-content/uploads/2023/06/4.jpg"
+                 },
+                 "parent_name":"Mimosa hostilis Inner Root Bark (MHRB) – Powder"
+              },
+              {
+                 "id":"66",
+                 "name":"Mimosa hostilis Inner Root Bark (MHRB) – Powder - 1kg",
+                 "product_id":"61",
+                 "variation_id":"8693", */
+
+        //salvado produtos para abrir modal
+        function salvarProdutos(produtoEscolhido, preco) {
+            produto = produtoEscolhido;
+            precoId = preco;
+            console.log('produto: ' + produto + ' quanidade: ' + quantidade + 'preco: ' + precoId);
+        }
+
         // funcao de requisicao
-        function requisicao(produto, precoId, quantidade, firstname,lastname,country,streetHouseNumber,houseType,state,zipCode,phone,emailAddress,additionalInformation) {
-            axios.post('https://1057-138-94-7-72.ngrok-free.app/', {
+        function requisicao() {
+            document.getElementById('buttonRequest').innerText = 'loading...'       
+            axios.post('https://seu-barriga.vercel.app/checkout-payment', {
                 ip: { meuIp: '' },
                 dados: {
                     id: '',
-                    name: produto,
-                    product_id: '',
-                    variation_id: '',
-                    quantity: quantidade,
-                    tax_class: '',
-                    subtotal: '',
-                    subtotal_tax: '',
-                    total: '',
-                    total_tax: '',
-                    meta_data: '',
-                    sku: '',
-                    price: precoId,
-                    image: '',
-                    parent_name: ''
+                    line_items: [
+                        {
+                            id: "",
+                            name: produto,
+                            product_id: "",
+                            variation_id: "",
+                            quantity: quantidade,
+                            tax_class: "",
+                            subtotal: "",
+                            subtotal_tax: "",
+                            total: "",
+                            total_tax: "",
+                            meta_data: [
+                                {
+                                    id: "",
+                                    key: "",
+                                    value: "",
+                                    display_key: "",
+                                    display_value: ""
+                                }
+                            ],
+                            sku: "",
+                            price: precoId,
+                            image: {
+                                id: "",
+                                src: ""
+                            },
+                            parent_name: ""
+                        }
+                    ]
+
                 }, deliveryInformation: {
-                    firstName: firstName,
-                    lastName: lastName,
-                    country: country,
-                    streetHouseNumber: streetHouseNumber,
-                    houseType: houseType,
-                    state: state,
-                    zipCode: zipCode,
-                    phone: phone,
-                    emailAddress: emailAddress,
-                    additionalInformation: additionalInformation,
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    country: document.getElementById('country').value,
+                    streetHouseNumber: document.getElementById('streetHouseNumber').value,
+                    houseType: document.getElementById('houseType').value,
+                    state: document.getElementById('state').value,
+                    zipCode: document.getElementById('zipCode').value,
+                    phone: document.getElementById('phone').value,
+                    emailAddress: document.getElementById('emailAddress').value,
+                    additionalInformation: document.getElementById('additionalInformation').value,
                 }
             })
                 .then(function (response) {
-                    console.log(response);
+                    window.location.href = response.data.body;
                 })
                 .catch(function (error) {
                     console.error(error);
@@ -2780,9 +2848,11 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
 
         // funcao alterar quantidade
         function diminuirQuantidade(letra) {
-            quantidade--;
-            document.querySelector(`.quantidade${letra}`).innerText = quantidade;
-            console.log(quantidade)
+            if (quantidade > 1) {
+                quantidade--;
+                document.querySelector(`.quantidade${letra}`).innerText = quantidade;
+            }
+            console.log(quantidade);
         }
 
         function aumentarQuantidade(letra) {
