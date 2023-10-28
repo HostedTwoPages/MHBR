@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.v="1.2.3",this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",t=>{this.persisted=t.persisted}),window.addEventListener("DOMContentLoaded",()=>{this._preconnect3rdParties()}),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}_addUserInteractionListener(t){if(document.hidden){t._triggerListener();return}this.triggerEvents.forEach(e=>window.addEventListener(e,t.userEventHandler,{passive:!0})),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler)}_removeUserInteractionListener(){this.triggerEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!0})),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"onclick","rocket-onclick"),this._pendingClickStarted())}_onTouchMove(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this._pendingClickFinished()}_onTouchEnd(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(t){t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this._pendingClickFinished()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach(t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))})}_waitForPendingClicks(){return new Promise(t=>{this._isClickPending?this._pendingClickFinished=t:t()})}_pendingClickStarted(){this._isClickPending=!0}_pendingClickFinished(){this._isClickPending=!1}_renameDOMAttribute(t,e,r){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(r,event.target.getAttribute(e)),event.target.removeAttribute(e))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(e=>{if(e.hasAttribute("src")){let r=new URL(e.src).origin;r!==location.origin&&t.push({src:r,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this._batchInjectResourceHints(t,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(this),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._waitForPendingClicks().then(()=>{this._replayClicks()}),this._emptyTrash()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _transformScript(t){return new Promise((await this._littleBreath(),navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor)?e=>{let r=document.createElement("script");[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),r.setAttribute(e,t.nodeValue))}),t.text&&(r.text=t.text),r.hasAttribute("src")?(r.addEventListener("load",e),r.addEventListener("error",e)):(r.text=t.text,e());try{t.parentNode.replaceChild(r,t)}catch(i){e()}}:async e=>{function r(){t.setAttribute("data-rocket-status","failed"),e()}try{let i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");t.text,i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",function r(){t.setAttribute("data-rocket-status","executed"),e()}),t.addEventListener("error",r),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}catch(s){r()}})}async _loadScriptsFromList(t){let e=t.shift();return e&&e.isConnected?(await this._transformScript(e),this._loadScriptsFromList(t)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(t,e){var r=document.createDocumentFragment();t.forEach(t=>{let i=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(i){let n=document.createElement("link");n.href=i,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),r.appendChild(n),this.trash.push(n)}}),document.head.appendChild(r)}_delayEventListeners(t){let e={};function r(t,r){!function t(r){!e[r]&&(e[r]={originalFunctions:{add:r.addEventListener,remove:r.removeEventListener},eventsToRewrite:[]},r.addEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.add.apply(r,arguments)},r.removeEventListener=function(){arguments[0]=i(arguments[0]),e[r].originalFunctions.remove.apply(r,arguments)});function i(t){return e[r].eventsToRewrite.indexOf(t)>=0?"rocket-"+t:t}}(t),e[t].eventsToRewrite.push(r)}function i(t,e){let r=t[e];Object.defineProperty(t,e,{get:()=>r||function(){},set(i){t["rocket"+e]=r=i}})}r(document,"DOMContentLoaded"),r(window,"DOMContentLoaded"),r(window,"load"),r(window,"pageshow"),r(document,"readystatechange"),i(document,"onreadystatechange"),i(window,"onload"),i(window,"onpageshow")}_delayJQueryReady(t){let e;function r(r){if(r&&r.fn&&!t.allJQueries.includes(r)){r.fn.ready=r.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(r):document.addEventListener("rocket-DOMContentLoaded",()=>e.bind(document)(r)),r([])};let i=r.fn.on;r.fn.on=r.fn.init.prototype.on=function(){if(this[0]===window){function t(t){return t.split(" ").map(t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=t(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(e=>{let r=arguments[0][e];delete arguments[0][e],arguments[0][t(e)]=r})}return i.apply(this,arguments),this},t.allJQueries.push(r)}e=r}r(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){r(t)}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this._littleBreath();let t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){let t=new Map;document.write=document.writeln=function(e){let r=document.currentScript;r||console.error("WPRocket unable to document.write this: "+e);let i=document.createRange(),n=r.parentElement,s=t.get(r);void 0===s&&(s=r.nextSibling,t.set(r,s));let a=document.createDocumentFragment();i.setStart(a,0),a.appendChild(i.createContextualFragment(e)),n.insertBefore(a,s)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}_emptyTrash(){this.trash.forEach(t=>t.remove())}static run(){let t=new RocketLazyLoadScripts;t._addUserInteractionListener(t)}}RocketLazyLoadScripts.run();</script>
+	
+		<title>MHRB Brazilian</title><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Inter%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap" media="print" onload="this.media='all'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap" /></noscript>
+<meta name='robots' content='max-image-preview:large' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="MHRB Brazilian &raquo; Feed" href="https://mhrbbrazilian.shop/?feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="MHRB Brazilian &raquo; Comments Feed" href="https://mhrbbrazilian.shop/?feed=comments-rss2" />
+<style>
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css' href='https://mhrbbrazilian.shop/wp-includes/css/dist/block-library/style.min.css?ver=6.3.2' media='all' />
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}body .is-layout-grid{display: grid;}body .is-layout-grid > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='hello-elementor-css' href='https://mhrbbrazilian.shop/wp-content/themes/hello-elementor/style.min.css?ver=2.8.1' media='all' />
+<link rel='stylesheet' id='hello-elementor-theme-style-css' href='https://mhrbbrazilian.shop/wp-content/themes/hello-elementor/theme.min.css?ver=2.8.1' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css' href='https://mhrbbrazilian.shop/wp-content/plugins/elementor/assets/css/frontend-lite.min.css?ver=3.16.5' media='all' />
+<link rel='stylesheet' id='elementor-post-5-css' href='https://mhrbbrazilian.shop/wp-content/uploads/elementor/css/post-5.css?ver=1697482736' media='all' />
+<link data-minify="1" rel='stylesheet' id='elementor-icons-css' href='https://mhrbbrazilian.shop/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=1697482768' media='all' />
+<link data-minify="1" rel='stylesheet' id='swiper-css' href='https://mhrbbrazilian.shop/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/swiper/v8/css/swiper.min.css?ver=1697482768' media='all' />
+<link rel='stylesheet' id='elementor-pro-css' href='https://mhrbbrazilian.shop/wp-content/plugins/pro-elements/assets/css/frontend-lite.min.css?ver=3.16.2' media='all' />
+<link rel='stylesheet' id='elementor-global-css' href='https://mhrbbrazilian.shop/wp-content/uploads/elementor/css/global.css?ver=1697482737' media='all' />
+<link rel='stylesheet' id='elementor-post-9077-css' href='https://mhrbbrazilian.shop/wp-content/uploads/elementor/css/post-9077.css?ver=1697485018' media='all' />
+
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-includes/js/jquery/jquery.min.js?ver=3.7.0' id='jquery-core-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1' id='jquery-migrate-js' defer></script>
+<link rel="https://api.w.org/" href="https://mhrbbrazilian.shop/index.php?rest_route=/" /><link rel="alternate" type="application/json" href="https://mhrbbrazilian.shop/index.php?rest_route=/wp/v2/pages/9077" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://mhrbbrazilian.shop/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.3.2" />
+<link rel="canonical" href="https://mhrbbrazilian.shop/" />
+<link rel='shortlink' href='https://mhrbbrazilian.shop/' />
+<link rel="alternate" type="application/json+oembed" href="https://mhrbbrazilian.shop/index.php?rest_route=%2Foembed%2F1.0%2Fembed&#038;url=https%3A%2F%2Fmhrbbrazilian.shop%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://mhrbbrazilian.shop/index.php?rest_route=%2Foembed%2F1.0%2Fembed&#038;url=https%3A%2F%2Fmhrbbrazilian.shop%2F&#038;format=xml" />
+<meta name="generator" content="Elementor 3.16.5; features: e_dom_optimization, e_optimized_assets_loading, e_optimized_css_loading, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
+<link rel="icon" href="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/cropped-logo-mimosa-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/cropped-logo-mimosa-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/cropped-logo-mimosa-180x180.png" />
+<meta name="msapplication-TileImage" content="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/cropped-logo-mimosa-270x270.png" />
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" /></head>
+<body class="home page-template page-template-elementor_canvas page page-id-9077 wp-custom-logo elementor-default elementor-template-canvas elementor-kit-5 elementor-page elementor-page-9077">
+			<div data-elementor-type="wp-page" data-elementor-id="9077" class="elementor elementor-9077" data-elementor-post-type="page">
+									<section class="elementor-section elementor-top-section elementor-element elementor-element-7cd34a71 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7cd34a71" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-no">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-7b2c945b" data-id="7b2c945b" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-c6077fb elementor-widget elementor-widget-image" data-id="c6077fb" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.16.0 - 09-10-2023 */
+.elementor-widget-image{text-align:center}.elementor-widget-image a{display:inline-block}.elementor-widget-image a img[src$=".svg"]{width:48px}.elementor-widget-image img{vertical-align:middle;display:inline-block}</style>												<img decoding="async" fetchpriority="high" width="512" height="512" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3C/svg%3E" class="attachment-large size-large wp-image-9270" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa.png 512w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa-300x300.png 300w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa-150x150.png 150w" data-lazy-sizes="(max-width: 512px) 100vw, 512px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa.png" /><noscript><img decoding="async" fetchpriority="high" width="512" height="512" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa.png" class="attachment-large size-large wp-image-9270" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa.png 512w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa-300x300.png 300w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa-150x150.png 150w" sizes="(max-width: 512px) 100vw, 512px" /></noscript>															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+		<div class="elementor-element elementor-element-efbee29 e-flex e-con-boxed e-con e-parent" data-id="efbee29" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-bd8920b e-con-full e-flex e-con e-child" data-id="bd8920b" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-bf5e689 elementor-absolute elementor-widget elementor-widget-image" data-id="bf5e689" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="576" height="335" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20576%20335'%3E%3C/svg%3E" class="attachment-large size-large wp-image-9130" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-3.png 576w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-3-300x174.png 300w" data-lazy-sizes="(max-width: 576px) 100vw, 576px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-3.png" /><noscript><img decoding="async" width="576" height="335" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-3.png" class="attachment-large size-large wp-image-9130" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-3.png 576w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-3-300x174.png 300w" sizes="(max-width: 576px) 100vw, 576px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-e46fa09 elementor-widget elementor-widget-text-editor" data-id="e46fa09" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.16.0 - 09-10-2023 */
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap{background-color:#69727d;color:#fff}.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap{color:#69727d;border:3px solid;background-color:transparent}.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap{margin-top:8px}.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap-letter{width:1em;height:1em}.elementor-widget-text-editor .elementor-drop-cap{float:left;text-align:center;line-height:1;font-size:50px}.elementor-widget-text-editor .elementor-drop-cap-letter{display:inline-block}</style>				Shop Now at our Ecommerce Store!
+
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-7f87de8 elementor-widget elementor-widget-heading" data-id="7f87de8" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.16.0 - 09-10-2023 */
+.elementor-heading-title{padding:0;margin:0;line-height:1}.elementor-widget-heading .elementor-heading-title[class*=elementor-size-]>a{color:inherit;font-size:inherit;line-height:inherit}.elementor-widget-heading .elementor-heading-title.elementor-size-small{font-size:15px}.elementor-widget-heading .elementor-heading-title.elementor-size-medium{font-size:19px}.elementor-widget-heading .elementor-heading-title.elementor-size-large{font-size:29px}.elementor-widget-heading .elementor-heading-title.elementor-size-xl{font-size:39px}.elementor-widget-heading .elementor-heading-title.elementor-size-xxl{font-size:59px}</style><h2 class="elementor-heading-title elementor-size-default">Discover the Power of MHRB Powdered</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-f551b11 elementor-widget elementor-widget-text-editor" data-id="f551b11" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>Unlock the <strong>Natural</strong> Potency: <strong>Premium Quality MHRB</strong> Powdered <strong>Extract</strong> for Your Wellness Journey!</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-9ad4aff elementor-align-left elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="9ad4aff" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#buy">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-605cefa elementor-absolute elementor-widget elementor-widget-image" data-id="605cefa" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="369" height="362" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20369%20362'%3E%3C/svg%3E" class="attachment-large size-large wp-image-9123" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-1.png 369w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-1-300x294.png 300w" data-lazy-sizes="(max-width: 369px) 100vw, 369px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-1.png" /><noscript><img decoding="async" width="369" height="362" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-1.png" class="attachment-large size-large wp-image-9123" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-1.png 369w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-1-300x294.png 300w" sizes="(max-width: 369px) 100vw, 369px" /></noscript>															</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-02f5d4a e-con-full e-flex e-con e-child" data-id="02f5d4a" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-877153c elementor-widget elementor-widget-image" data-id="877153c" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="800" height="948" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20948'%3E%3C/svg%3E" class="attachment-large size-large wp-image-9254" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/mimosa-principal-1-864x1024.png 864w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/mimosa-principal-1-253x300.png 253w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/mimosa-principal-1-768x910.png 768w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/mimosa-principal-1.png 1150w" data-lazy-sizes="(max-width: 800px) 100vw, 800px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/mimosa-principal-1-864x1024.png" /><noscript><img decoding="async" width="800" height="948" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/mimosa-principal-1-864x1024.png" class="attachment-large size-large wp-image-9254" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/mimosa-principal-1-864x1024.png 864w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/mimosa-principal-1-253x300.png 253w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/mimosa-principal-1-768x910.png 768w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/mimosa-principal-1.png 1150w" sizes="(max-width: 800px) 100vw, 800px" /></noscript>															</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-1e4fc0f e-flex e-con-boxed e-con e-parent" data-id="1e4fc0f" data-element_type="container" id="buy" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-ad239f1 e-con-full js-scroll-bottom e-flex e-con e-child" data-id="ad239f1" data-element_type="container" id="sessao" data-settings="{&quot;content_width&quot;:&quot;full&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-element elementor-element-f6fa9ed elementor-widget elementor-widget-html" data-id="f6fa9ed" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-widget-container">
+			<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://mhrbbrazilian.shop/wp-content/cache/min/1/jquery-3.6.0.min.js?ver=1697482769" defer></script>
+<script type="rocketlazyloadscript">window.addEventListener('DOMContentLoaded', function() {
+//No Youtube Remake using this Snippet without Permission
+//Copyrighted by Jim Fahad
+var $ = jQuery
+$(document).ready(function(){
+    $('[data-showme]').on('click', function(){
+        var showme = $(this).attr('data-showme')
+        
+        $('.all-images').hide()
+        $('#' + showme).show()
+    })
+})
+});</script>		</div>
+				</div>
+				<div class="elementor-element elementor-element-c566e5b elementor-position-top elementor-widget elementor-widget-image-box" data-id="c566e5b" data-element_type="widget" data-widget_type="image-box.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.16.0 - 09-10-2023 */
+.elementor-widget-image-box .elementor-image-box-content{width:100%}@media (min-width:768px){.elementor-widget-image-box.elementor-position-left .elementor-image-box-wrapper,.elementor-widget-image-box.elementor-position-right .elementor-image-box-wrapper{display:flex}.elementor-widget-image-box.elementor-position-right .elementor-image-box-wrapper{text-align:right;flex-direction:row-reverse}.elementor-widget-image-box.elementor-position-left .elementor-image-box-wrapper{text-align:left;flex-direction:row}.elementor-widget-image-box.elementor-position-top .elementor-image-box-img{margin:auto}.elementor-widget-image-box.elementor-vertical-align-top .elementor-image-box-wrapper{align-items:flex-start}.elementor-widget-image-box.elementor-vertical-align-middle .elementor-image-box-wrapper{align-items:center}.elementor-widget-image-box.elementor-vertical-align-bottom .elementor-image-box-wrapper{align-items:flex-end}}@media (max-width:767px){.elementor-widget-image-box .elementor-image-box-img{margin-left:auto!important;margin-right:auto!important;margin-bottom:15px}}.elementor-widget-image-box .elementor-image-box-img{display:inline-block}.elementor-widget-image-box .elementor-image-box-title a{color:inherit}.elementor-widget-image-box .elementor-image-box-wrapper{text-align:center}.elementor-widget-image-box .elementor-image-box-description{margin:0}</style><div class="elementor-image-box-wrapper"><figure class="elementor-image-box-img"><img decoding="async" width="960" height="1280" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20960%201280'%3E%3C/svg%3E" class="attachment-full size-full wp-image-8980" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-1.jpg 960w, https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-1-225x300.jpg 225w, https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-1-768x1024.jpg 768w" data-lazy-sizes="(max-width: 960px) 100vw, 960px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-1.jpg" /><noscript><img decoding="async" width="960" height="1280" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-1.jpg" class="attachment-full size-full wp-image-8980" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-1.jpg 960w, https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-1-225x300.jpg 225w, https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-1-768x1024.jpg 768w" sizes="(max-width: 960px) 100vw, 960px" /></noscript></figure><div class="elementor-image-box-content"><h3 class="elementor-image-box-title">MHRB – Powder</h3><p class="elementor-image-box-description">$91 - $480 </p></div></div>		</div>
+				</div>
+				<div class="elementor-element elementor-element-9f123da elementor-widget elementor-widget-text-editor" data-id="9f123da" data-element_type="widget" id="aq" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><em>Select the desired weight:</em></p>						</div>
+				</div>
+		<div class="elementor-element elementor-element-b1dbea3 showclick e-flex e-con-boxed e-con e-child" data-id="b1dbea3" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-9718e3d elementor-align-center elementor-widget elementor-widget-button" data-id="9718e3d" data-element_type="widget" id="aqui" data-showme="red-image" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">0,5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-14f80b2 elementor-align-center elementor-widget elementor-widget-button" data-id="14f80b2" data-element_type="widget" data-showme="1-image" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">1kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-5621558 elementor-align-center elementor-widget elementor-widget-button" data-id="5621558" data-element_type="widget" data-showme="2-image" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">1,5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-fae8657 showclick e-flex e-con-boxed e-con e-child" data-id="fae8657" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-d6185d9 elementor-align-center elementor-widget elementor-widget-button" data-id="d6185d9" data-element_type="widget" data-showme="3-image" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">2kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-f8b87da elementor-align-center elementor-widget elementor-widget-button" data-id="f8b87da" data-element_type="widget" data-showme="4-image" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">3kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-ac8c7d0 elementor-align-center elementor-widget elementor-widget-button" data-id="ac8c7d0" data-element_type="widget" data-showme="5-image" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-9b99090 showclick e-flex e-con-boxed e-con e-child" data-id="9b99090" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-a2b5c11 elementor-align-center all-images elementor-widget elementor-widget-button" data-id="a2b5c11" data-element_type="widget" id="red-image" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 0,5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-7e3c2ee elementor-align-center all-images elementor-widget elementor-widget-button" data-id="7e3c2ee" data-element_type="widget" id="1-image" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 1kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-a96d8ef elementor-align-center all-images elementor-widget elementor-widget-button" data-id="a96d8ef" data-element_type="widget" id="2-image" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 1,5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-9aacbe9 elementor-align-center all-images elementor-widget elementor-widget-button" data-id="9aacbe9" data-element_type="widget" id="3-image" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 2kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-fa45759 elementor-align-center all-images elementor-widget elementor-widget-button" data-id="fa45759" data-element_type="widget" id="4-image" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 3kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-52f56c6 elementor-align-center all-images elementor-widget elementor-widget-button" data-id="52f56c6" data-element_type="widget" id="5-image" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+					</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-7716655 e-con-full js-scroll-bottom e-flex e-con e-child" data-id="7716655" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-element elementor-element-5cdf18b elementor-widget elementor-widget-html" data-id="5cdf18b" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-widget-container">
+			<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://mhrbbrazilian.shop/wp-content/cache/min/1/jquery-3.6.0.min.js?ver=1697482769" defer></script>
+<script type="rocketlazyloadscript">window.addEventListener('DOMContentLoaded', function() {
+//No Youtube Remake using this Snippet without Permission
+//Copyrighted by Jim Fahad
+var $ = jQuery
+$(document).ready(function(){
+    $('[data-showme]').on('click', function(){
+        var showme = $(this).attr('data-showme')
+        
+        $('.alll-images').hide()
+        $('#' + showme).show()
+    })
+})
+});</script>		</div>
+				</div>
+				<div class="elementor-element elementor-element-a83daac elementor-position-top elementor-widget elementor-widget-image-box" data-id="a83daac" data-element_type="widget" data-widget_type="image-box.default">
+				<div class="elementor-widget-container">
+			<div class="elementor-image-box-wrapper"><figure class="elementor-image-box-img"><img decoding="async" width="960" height="1280" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20960%201280'%3E%3C/svg%3E" class="attachment-full size-full wp-image-8979" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shippijg-2.jpg 960w, https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shippijg-2-225x300.jpg 225w, https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shippijg-2-768x1024.jpg 768w" data-lazy-sizes="(max-width: 960px) 100vw, 960px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shippijg-2.jpg" /><noscript><img decoding="async" width="960" height="1280" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shippijg-2.jpg" class="attachment-full size-full wp-image-8979" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shippijg-2.jpg 960w, https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shippijg-2-225x300.jpg 225w, https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shippijg-2-768x1024.jpg 768w" sizes="(max-width: 960px) 100vw, 960px" /></noscript></figure><div class="elementor-image-box-content"><h3 class="elementor-image-box-title">MHRB – Shredded</h3><p class="elementor-image-box-description">$96 - $500 </p></div></div>		</div>
+				</div>
+				<div class="elementor-element elementor-element-1343581 elementor-widget elementor-widget-text-editor" data-id="1343581" data-element_type="widget" id="aq2" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><em>Select the desired weight:</em></p>						</div>
+				</div>
+		<div class="elementor-element elementor-element-8423b67 showclick e-flex e-con-boxed e-con e-child" data-id="8423b67" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-266b316 elementor-align-center elementor-widget elementor-widget-button" data-id="266b316" data-element_type="widget" data-showme="1-button" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq2">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">0,5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-6b1d839 elementor-align-center elementor-widget elementor-widget-button" data-id="6b1d839" data-element_type="widget" data-showme="2-button" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq2">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">1kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-0c6fe48 elementor-align-center elementor-widget elementor-widget-button" data-id="0c6fe48" data-element_type="widget" data-showme="3-button" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq2">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">1,5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-24c418f showclick e-flex e-con-boxed e-con e-child" data-id="24c418f" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-ef7b65c elementor-align-center elementor-widget elementor-widget-button" data-id="ef7b65c" data-element_type="widget" data-showme="4-button" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq2">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">2kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-2b8595c elementor-align-center elementor-widget elementor-widget-button" data-id="2b8595c" data-element_type="widget" data-showme="5-button" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq2">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">3kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-033dc58 elementor-align-center elementor-widget elementor-widget-button" data-id="033dc58" data-element_type="widget" data-showme="6-button" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq2">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-44f16e5 showclick e-flex e-con-boxed e-con e-child" data-id="44f16e5" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-cd76e05 elementor-align-center alll-images elementor-widget elementor-widget-button" data-id="cd76e05" data-element_type="widget" id="1-button" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 0,5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-37cb3ed elementor-align-center all-images elementor-widget elementor-widget-button" data-id="37cb3ed" data-element_type="widget" id="2-button" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 1kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-0448372 elementor-align-center alll-images elementor-widget elementor-widget-button" data-id="0448372" data-element_type="widget" id="3-button" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 1,5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-852cd91 elementor-align-center alll-images elementor-widget elementor-widget-button" data-id="852cd91" data-element_type="widget" id="4-button" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 2kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-0809d8e elementor-align-center alll-images elementor-widget elementor-widget-button" data-id="0809d8e" data-element_type="widget" id="5-button" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 3kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-fe5d41c elementor-align-center alll-images elementor-widget elementor-widget-button" data-id="fe5d41c" data-element_type="widget" id="6-button" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+					</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-0e82b93 e-con-full js-scroll-bottom e-flex e-con e-child" data-id="0e82b93" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-element elementor-element-9fe5a78 elementor-position-top elementor-widget elementor-widget-image-box" data-id="9fe5a78" data-element_type="widget" data-widget_type="image-box.default">
+				<div class="elementor-widget-container">
+			<div class="elementor-image-box-wrapper"><figure class="elementor-image-box-img"><img decoding="async" width="960" height="1280" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20960%201280'%3E%3C/svg%3E" class="attachment-full size-full wp-image-8978" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-3.jpg 960w, https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-3-225x300.jpg 225w, https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-3-768x1024.jpg 768w" data-lazy-sizes="(max-width: 960px) 100vw, 960px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-3.jpg" /><noscript><img decoding="async" width="960" height="1280" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-3.jpg" class="attachment-full size-full wp-image-8978" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-3.jpg 960w, https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-3-225x300.jpg 225w, https://mhrbbrazilian.shop/wp-content/uploads/2023/06/free-shipping-3-768x1024.jpg 768w" sizes="(max-width: 960px) 100vw, 960px" /></noscript></figure><div class="elementor-image-box-content"><h3 class="elementor-image-box-title">MHRB – Whole</h3><p class="elementor-image-box-description">$96 - $500 </p></div></div>		</div>
+				</div>
+				<div class="elementor-element elementor-element-289d085 elementor-widget elementor-widget-text-editor" data-id="289d085" data-element_type="widget" id="aq3" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p><em>Select the desired weight:</em></p>						</div>
+				</div>
+		<div class="elementor-element elementor-element-18ea0db showclick e-flex e-con-boxed e-con e-child" data-id="18ea0db" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-0e4b600 elementor-align-center elementor-widget elementor-widget-button" data-id="0e4b600" data-element_type="widget" data-showme="b3-1" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq3">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">0,5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-1482d00 elementor-align-center elementor-widget elementor-widget-button" data-id="1482d00" data-element_type="widget" data-showme="b3-2" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq3">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">1kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-810b3d3 elementor-align-center elementor-widget elementor-widget-button" data-id="810b3d3" data-element_type="widget" data-showme="b3-3" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq3">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">1,5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-4f75847 showclick e-flex e-con-boxed e-con e-child" data-id="4f75847" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-3825e10 elementor-align-center elementor-widget elementor-widget-button" data-id="3825e10" data-element_type="widget" data-showme="b3-4" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq3">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">2kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-f2580d0 elementor-align-center elementor-widget elementor-widget-button" data-id="f2580d0" data-element_type="widget" data-showme="b3-5" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq3">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">3kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-849b209 elementor-align-center elementor-widget elementor-widget-button" data-id="849b209" data-element_type="widget" data-showme="b3-6" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#aq3">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-3066e0b showclick e-flex e-con-boxed e-con e-child" data-id="3066e0b" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-2286676 elementor-align-center alll-images elementor-widget elementor-widget-button" data-id="2286676" data-element_type="widget" id="b3-1" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 0,5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-ef206df elementor-align-center all-images elementor-widget elementor-widget-button" data-id="ef206df" data-element_type="widget" id="b3-2" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 1kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-2e4b13c elementor-align-center alll-images elementor-widget elementor-widget-button" data-id="2e4b13c" data-element_type="widget" id="b3-3" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 1,5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-8168008 elementor-align-center alll-images elementor-widget elementor-widget-button" data-id="8168008" data-element_type="widget" id="b3-4" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 2kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-c41318d elementor-align-center alll-images elementor-widget elementor-widget-button" data-id="c41318d" data-element_type="widget" id="b3-5" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 3kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-eb852d5 elementor-align-center alll-images elementor-widget elementor-widget-button" data-id="eb852d5" data-element_type="widget" id="b3-6" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now 5kg</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+					</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-f0ef8c8 elementor-absolute elementor-widget elementor-widget-image" data-id="f0ef8c8" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="214" height="215" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20214%20215'%3E%3C/svg%3E" class="attachment-large size-large wp-image-9129" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-2.png 214w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-2-150x150.png 150w" data-lazy-sizes="(max-width: 214px) 100vw, 214px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-2.png" /><noscript><img decoding="async" width="214" height="215" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-2.png" class="attachment-large size-large wp-image-9129" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-2.png 214w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-2-150x150.png 150w" sizes="(max-width: 214px) 100vw, 214px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-ab8c5d5 elementor-absolute elementor-widget elementor-widget-image" data-id="ab8c5d5" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;,&quot;motion_fx_motion_fx_scrolling&quot;:&quot;yes&quot;,&quot;motion_fx_translateY_effect&quot;:&quot;yes&quot;,&quot;motion_fx_translateX_effect&quot;:&quot;yes&quot;,&quot;motion_fx_translateY_speed&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:4,&quot;sizes&quot;:[]},&quot;motion_fx_translateY_affectedRange&quot;:{&quot;unit&quot;:&quot;%&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:{&quot;start&quot;:0,&quot;end&quot;:100}},&quot;motion_fx_translateX_speed&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:4,&quot;sizes&quot;:[]},&quot;motion_fx_translateX_affectedRange&quot;:{&quot;unit&quot;:&quot;%&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:{&quot;start&quot;:0,&quot;end&quot;:100}},&quot;motion_fx_devices&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;]}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="318" height="373" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20318%20373'%3E%3C/svg%3E" class="attachment-large size-large wp-image-9122" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-copy.png 318w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-copy-256x300.png 256w" data-lazy-sizes="(max-width: 318px) 100vw, 318px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-copy.png" /><noscript><img decoding="async" width="318" height="373" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-copy.png" class="attachment-large size-large wp-image-9122" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-copy.png 318w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-copy-256x300.png 256w" sizes="(max-width: 318px) 100vw, 318px" /></noscript>															</div>
+				</div>
+					</div>
+				</div>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-485fc18d elementor-section-content-bottom elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="485fc18d" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+							<div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-4f3e6756" data-id="4f3e6756" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-f7397d0 elementor-widget elementor-widget-heading" data-id="f7397d0" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Our products have free shipping
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-8da64d5 elementor-widget elementor-widget-text-editor" data-id="8da64d5" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							Check shipping information
+
+						</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+		<div class="elementor-element elementor-element-095d03c e-flex e-con-boxed e-con e-parent" data-id="095d03c" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-a6382d0 e-con-full e-flex e-con e-child" data-id="a6382d0" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-456e601 js-scroll-left elementor-widget elementor-widget-image" data-id="456e601" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="768" height="1024" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20768%201024'%3E%3C/svg%3E" class="attachment-large size-large wp-image-9253" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/20231012_192343-1-768x1024.jpg 768w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/20231012_192343-1-225x300.jpg 225w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/20231012_192343-1-1152x1536.jpg 1152w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/20231012_192343-1-1536x2048.jpg 1536w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/20231012_192343-1-scaled.jpg 1920w" data-lazy-sizes="(max-width: 768px) 100vw, 768px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/20231012_192343-1-768x1024.jpg" /><noscript><img decoding="async" width="768" height="1024" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/20231012_192343-1-768x1024.jpg" class="attachment-large size-large wp-image-9253" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/20231012_192343-1-768x1024.jpg 768w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/20231012_192343-1-225x300.jpg 225w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/20231012_192343-1-1152x1536.jpg 1152w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/20231012_192343-1-1536x2048.jpg 1536w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/20231012_192343-1-scaled.jpg 1920w" sizes="(max-width: 768px) 100vw, 768px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-7117717 elementor-absolute elementor-widget elementor-widget-image" data-id="7117717" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="666" height="577" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20666%20577'%3E%3C/svg%3E" class="attachment-full size-full wp-image-9138" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Place-Your-Design-Here-Double-Click-to-Edit.png 666w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Place-Your-Design-Here-Double-Click-to-Edit-300x260.png 300w" data-lazy-sizes="(max-width: 666px) 100vw, 666px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Place-Your-Design-Here-Double-Click-to-Edit.png" /><noscript><img decoding="async" width="666" height="577" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Place-Your-Design-Here-Double-Click-to-Edit.png" class="attachment-full size-full wp-image-9138" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Place-Your-Design-Here-Double-Click-to-Edit.png 666w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Place-Your-Design-Here-Double-Click-to-Edit-300x260.png 300w" sizes="(max-width: 666px) 100vw, 666px" /></noscript>															</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-f174b1a e-con-full e-flex e-con e-child" data-id="f174b1a" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;}">
+				<div class="elementor-element elementor-element-59207bf elementor-widget elementor-widget-text-editor" data-id="59207bf" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							Powdered Unleash Nature&#8217;s Hidden Treasures
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-87a3651 elementor-widget elementor-widget-heading" data-id="87a3651" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Discover the Powerful Potential of MHRB</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-bb75bec elementor-widget elementor-widget-text-editor" data-id="bb75bec" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>Choose us for premium quality, exceptional service, and a commitment to your well-being. Experience the enchanting power of MHRB and embark on a transformative journey towards natural wellness.</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-0f658dd elementor-align-left elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="0f658dd" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#buy">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-779eced e-flex e-con-boxed e-con e-parent" data-id="779eced" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;shape_divider_top&quot;:&quot;waves&quot;,&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+				<div class="elementor-shape elementor-shape-top" data-negative="false">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+	<path class="elementor-shape-fill" d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7
+	c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4
+	c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z"/>
+</svg>		</div>
+				<div class="elementor-element elementor-element-9feb70d js-scroll-bottom elementor-widget elementor-widget-text-editor" data-id="9feb70d" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>Who we are</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-74728c3 js-scroll-bottom elementor-widget elementor-widget-heading" data-id="74728c3" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">About Us</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-85fb3e6 js-scroll-bottom elementor-widget elementor-widget-text-editor" data-id="85fb3e6" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>Passionate about quality MHRB products. Ethically sourced, expertly handled. Your trusted source for botanical excellence.</p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-d583269 elementor-align-center elementor-widget elementor-widget-button" data-id="d583269" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+			<a class="elementor-button elementor-button-link elementor-size-sm" href="#buy">
+						<span class="elementor-button-content-wrapper">
+						<span class="elementor-button-text">Buy now</span>
+		</span>
+					</a>
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-2b78c8a elementor-widget elementor-widget-html" data-id="2b78c8a" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-widget-container">
+			<script type="rocketlazyloadscript">
+
+//scroll de baixo
+    const sections3 = document.querySelectorAll('.js-scroll-bottom');
+    const windowMetade3 = window.innerHeight * 0.6;
+    
+    function animaScroll3(){
+        sections3.forEach((section3) => {
+            const sectionTop = section3.getBoundingClientRect().top - windowMetade3;
+        if(sectionTop < 120) {
+            section3.classList.add('ativo3');
+        }
+        else {
+            section3.classList.remove('ativo3');
+        }
+        })
+    }
+    
+    window.addEventListener('scroll', animaScroll3);
+</script>
+
+<script type="rocketlazyloadscript">//scroll da esquerda
+    const sections = document.querySelectorAll('.js-scroll-left');
+    const windowMetade = window.innerHeight * 0.6;
+    
+    function animaScroll(){
+        sections.forEach((section) => {
+            const sectionTop = section.getBoundingClientRect().top - windowMetade;
+        if(sectionTop < 120) {
+            section.classList.add('ativo');
+        }
+        else {
+            section.classList.remove('ativo');
+        }
+        })
+    }
+    
+    window.addEventListener('scroll', animaScroll);
+</script>
+
+<script type="rocketlazyloadscript">//scroll da direita
+    const sections2 = document.querySelectorAll('.js-scroll-right');
+    const windowMetade2 = window.innerHeight * 0.6;
+
+    function animaScroll2() {
+        sections2.forEach((section2)=>{
+            const sectionTop = section2.getBoundingClientRect().top - windowMetade2;
+            if (sectionTop < 120) {
+                section2.classList.add('ativo2');
+            } else {
+                section2.classList.remove('ativo2');
+            }
+        }
+        )
+    }
+
+    window.addEventListener('scroll', animaScroll2);
+                                        </script>
+                       		</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-48ca0a7 e-flex e-con-boxed e-con e-parent" data-id="48ca0a7" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;content_width&quot;:&quot;boxed&quot;}" data-core-v316-plus="true">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-bf98ba5 e-flex e-con-boxed e-con e-child" data-id="bf98ba5" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;boxed&quot;}">
+					<div class="e-con-inner">
+		<div class="elementor-element elementor-element-413a88e e-con-full e-flex e-con e-child" data-id="413a88e" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-element elementor-element-9c3436c elementor-position-top elementor-widget elementor-widget-image-box" data-id="9c3436c" data-element_type="widget" data-widget_type="image-box.default">
+				<div class="elementor-widget-container">
+			<div class="elementor-image-box-wrapper"><figure class="elementor-image-box-img"><img decoding="async" width="512" height="512" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3C/svg%3E" class="attachment-full size-full wp-image-9266" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/drop-shipping.png 512w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/drop-shipping-300x300.png 300w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/drop-shipping-150x150.png 150w" data-lazy-sizes="(max-width: 512px) 100vw, 512px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/drop-shipping.png" /><noscript><img decoding="async" width="512" height="512" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/drop-shipping.png" class="attachment-full size-full wp-image-9266" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/drop-shipping.png 512w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/drop-shipping-300x300.png 300w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/drop-shipping-150x150.png 150w" sizes="(max-width: 512px) 100vw, 512px" /></noscript></figure><div class="elementor-image-box-content"><h3 class="elementor-image-box-title">Free Shipping</h3><p class="elementor-image-box-description">Enjoy complimentary shipping on all orders. Elevate your experience without worrying about additional costs.</p></div></div>		</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-be76aa5 e-con-full e-flex e-con e-child" data-id="be76aa5" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-element elementor-element-9ad89c5 elementor-position-top elementor-widget elementor-widget-image-box" data-id="9ad89c5" data-element_type="widget" data-widget_type="image-box.default">
+				<div class="elementor-widget-container">
+			<div class="elementor-image-box-wrapper"><figure class="elementor-image-box-img"><img decoding="async" width="512" height="512" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3C/svg%3E" class="attachment-full size-full wp-image-9265" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/ganho.png 512w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/ganho-300x300.png 300w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/ganho-150x150.png 150w" data-lazy-sizes="(max-width: 512px) 100vw, 512px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/ganho.png" /><noscript><img decoding="async" width="512" height="512" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/ganho.png" class="attachment-full size-full wp-image-9265" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/ganho.png 512w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/ganho-300x300.png 300w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/ganho-150x150.png 150w" sizes="(max-width: 512px) 100vw, 512px" /></noscript></figure><div class="elementor-image-box-content"><h3 class="elementor-image-box-title">Fast Refaund</h3><p class="elementor-image-box-description">Unhappy with your purchase? Our swift refund process ensures your satisfaction is our top priority</p></div></div>		</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-e08fdfc e-con-full e-flex e-con e-child" data-id="e08fdfc" data-element_type="container" data-settings="{&quot;content_width&quot;:&quot;full&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-element elementor-element-93404bd elementor-position-top elementor-widget elementor-widget-image-box" data-id="93404bd" data-element_type="widget" data-widget_type="image-box.default">
+				<div class="elementor-widget-container">
+			<div class="elementor-image-box-wrapper"><figure class="elementor-image-box-img"><img decoding="async" width="512" height="512" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3C/svg%3E" class="attachment-full size-full wp-image-9264" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/suporte-tecnico.png 512w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/suporte-tecnico-300x300.png 300w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/suporte-tecnico-150x150.png 150w" data-lazy-sizes="(max-width: 512px) 100vw, 512px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/suporte-tecnico.png" /><noscript><img decoding="async" width="512" height="512" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/suporte-tecnico.png" class="attachment-full size-full wp-image-9264" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/suporte-tecnico.png 512w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/suporte-tecnico-300x300.png 300w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/suporte-tecnico-150x150.png 150w" sizes="(max-width: 512px) 100vw, 512px" /></noscript></figure><div class="elementor-image-box-content"><h3 class="elementor-image-box-title">Exclusive Support</h3><p class="elementor-image-box-description">Our dedicated team is here for you. Get personalized assistance for a seamless shopping experience</p></div></div>		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-599cc36 elementor-absolute elementor-widget elementor-widget-image" data-id="599cc36" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="214" height="215" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20214%20215'%3E%3C/svg%3E" class="attachment-large size-large wp-image-9129" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-2.png 214w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-2-150x150.png 150w" data-lazy-sizes="(max-width: 214px) 100vw, 214px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-2.png" /><noscript><img decoding="async" width="214" height="215" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-2.png" class="attachment-large size-large wp-image-9129" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-2.png 214w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object-2-150x150.png 150w" sizes="(max-width: 214px) 100vw, 214px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-40e2a8c elementor-absolute elementor-widget elementor-widget-image" data-id="40e2a8c" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="374" height="345" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20374%20345'%3E%3C/svg%3E" class="attachment-large size-large wp-image-9127" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png 374w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-300x277.png 300w" data-lazy-sizes="(max-width: 374px) 100vw, 374px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png" /><noscript><img decoding="async" width="374" height="345" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png" class="attachment-large size-large wp-image-9127" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png 374w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-300x277.png 300w" sizes="(max-width: 374px) 100vw, 374px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-1b6640e elementor-absolute elementor-widget elementor-widget-image" data-id="1b6640e" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="369" height="362" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20369%20362'%3E%3C/svg%3E" class="attachment-large size-large wp-image-9123" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-1.png 369w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-1-300x294.png 300w" data-lazy-sizes="(max-width: 369px) 100vw, 369px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-1.png" /><noscript><img decoding="async" width="369" height="362" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-1.png" class="attachment-large size-large wp-image-9123" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-1.png 369w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-1-300x294.png 300w" sizes="(max-width: 369px) 100vw, 369px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-b8eb1d7 elementor-absolute elementor-widget elementor-widget-image" data-id="b8eb1d7" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="374" height="345" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20374%20345'%3E%3C/svg%3E" class="attachment-large size-large wp-image-9127" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png 374w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-300x277.png 300w" data-lazy-sizes="(max-width: 374px) 100vw, 374px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png" /><noscript><img decoding="async" width="374" height="345" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png" class="attachment-large size-large wp-image-9127" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png 374w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-300x277.png 300w" sizes="(max-width: 374px) 100vw, 374px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-e0d9aa8 elementor-absolute elementor-widget elementor-widget-image" data-id="e0d9aa8" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="374" height="345" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20374%20345'%3E%3C/svg%3E" class="attachment-large size-large wp-image-9127" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png 374w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-300x277.png 300w" data-lazy-sizes="(max-width: 374px) 100vw, 374px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png" /><noscript><img decoding="async" width="374" height="345" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png" class="attachment-large size-large wp-image-9127" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png 374w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-300x277.png 300w" sizes="(max-width: 374px) 100vw, 374px" /></noscript>															</div>
+				</div>
+				<div class="elementor-element elementor-element-de77b38 elementor-absolute my-image elementor-widget elementor-widget-image" data-id="de77b38" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" width="374" height="345" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20374%20345'%3E%3C/svg%3E" class="attachment-large size-large wp-image-9127" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png 374w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-300x277.png 300w" data-lazy-sizes="(max-width: 374px) 100vw, 374px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png" /><noscript><img decoding="async" width="374" height="345" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png" class="attachment-large size-large wp-image-9127" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_.png 374w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/Vector-Smart-Object_-300x277.png 300w" sizes="(max-width: 374px) 100vw, 374px" /></noscript>															</div>
+				</div>
+					</div>
+				</div>
+					</div>
+				</div>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-3fd868b elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="3fd868b" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-no">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-ae759b8" data-id="ae759b8" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-414e51a elementor-widget elementor-widget-image" data-id="414e51a" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+															<img decoding="async" fetchpriority="high" width="512" height="512" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20512%20512'%3E%3C/svg%3E" class="attachment-large size-large wp-image-9270" alt="" data-lazy-srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa.png 512w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa-300x300.png 300w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa-150x150.png 150w" data-lazy-sizes="(max-width: 512px) 100vw, 512px" data-lazy-src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa.png" /><noscript><img decoding="async" fetchpriority="high" width="512" height="512" src="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa.png" class="attachment-large size-large wp-image-9270" alt="" srcset="https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa.png 512w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa-300x300.png 300w, https://mhrbbrazilian.shop/wp-content/uploads/2023/10/logo-mimosa-150x150.png 150w" sizes="(max-width: 512px) 100vw, 512px" /></noscript>															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+							</div>
+		<script type="rocketlazyloadscript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script id='rocket-preload-links-js-extra'>
+var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index\\.php\/)?(.*)wp\\-json(\/.*|$)|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https:\/\/mhrbbrazilian.shop","onHoverDelay":"100","rateThrottle":"3"};
+</script>
+<script type="rocketlazyloadscript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-content/themes/hello-elementor/assets/js/hello-frontend.min.js?ver=1.0.0' id='hello-theme-frontend-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-content/plugins/pro-elements/assets/js/webpack-pro.runtime.min.js?ver=3.16.2' id='elementor-pro-webpack-runtime-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.16.5' id='elementor-webpack-runtime-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.16.5' id='elementor-frontend-modules-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-includes/js/dist/vendor/wp-polyfill-inert.min.js?ver=3.1.2' id='wp-polyfill-inert-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.13.11' id='regenerator-runtime-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0' id='wp-polyfill-js'></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-includes/js/dist/hooks.min.js?ver=c6aec9a8d4e5a5d543a1' id='wp-hooks-js'></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-includes/js/dist/i18n.min.js?ver=7701b0c3857f914212ef' id='wp-i18n-js'></script>
+<script type="rocketlazyloadscript" id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+</script>
+<script type="rocketlazyloadscript" id="elementor-pro-frontend-js-before">
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/mhrbbrazilian.shop\/wp-admin\/admin-ajax.php","nonce":"b9f4728305","urls":{"assets":"https:\/\/mhrbbrazilian.shop\/wp-content\/plugins\/pro-elements\/assets\/","rest":"https:\/\/mhrbbrazilian.shop\/index.php?rest_route=\/"},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"}},"facebook_sdk":{"lang":"en_US","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/mhrbbrazilian.shop\/wp-content\/plugins\/pro-elements\/modules\/lottie\/assets\/animations\/default.json"}};
+</script>
+<script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-content/plugins/pro-elements/assets/js/frontend.min.js?ver=3.16.2' id='elementor-pro-frontend-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2' id='elementor-waypoints-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-includes/js/jquery/ui/core.min.js?ver=1.13.2' id='jquery-ui-core-js' defer></script>
+<script type="rocketlazyloadscript" id="elementor-frontend-js-before">
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close","a11yCarouselWrapperAriaLabel":"Carousel | Horizontal scrolling: Arrow Left & Right","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}}},"version":"3.16.5","is_static":false,"experimentalFeatures":{"e_dom_optimization":true,"e_optimized_assets_loading":true,"e_optimized_css_loading":true,"additional_custom_breakpoints":true,"container":true,"e_swiper_latest":true,"theme_builder_v2":true,"hello-theme-header-footer":true,"landing-pages":true,"e_global_styleguide":true,"page-transitions":true,"notes":true,"form-submissions":true,"e_scroll_snap":true},"urls":{"assets":"https:\/\/mhrbbrazilian.shop\/wp-content\/plugins\/elementor\/assets\/"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"logo","hello_footer_logo_type":"logo"},"post":{"id":9077,"title":"MHRB%20Brazilian","excerpt":"","featuredImage":false}};
+</script>
+<script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.16.5' id='elementor-frontend-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://mhrbbrazilian.shop/wp-content/plugins/pro-elements/assets/js/elements-handlers.min.js?ver=3.16.2' id='pro-elements-handlers-js' defer></script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://mhrbbrazilian.shop/wp-content/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script>	<script>class RocketElementorAnimation{constructor(){this.deviceMode=document.createElement("span"),this.deviceMode.id="elementor-device-mode",this.deviceMode.setAttribute("class","elementor-screen-only"),document.body.appendChild(this.deviceMode)}_detectAnimations(){let t=getComputedStyle(this.deviceMode,":after").content.replace(/"/g,"");this.animationSettingKeys=this._listAnimationSettingsKeys(t),document.querySelectorAll(".elementor-invisible[data-settings]").forEach(t=>{const e=t.getBoundingClientRect();if(e.bottom>=0&&e.top<=window.innerHeight)try{this._animateElement(t)}catch(t){}})}_animateElement(t){const e=JSON.parse(t.dataset.settings),i=e._animation_delay||e.animation_delay||0,n=e[this.animationSettingKeys.find(t=>e[t])];if("none"===n)return void t.classList.remove("elementor-invisible");t.classList.remove(n),this.currentAnimation&&t.classList.remove(this.currentAnimation),this.currentAnimation=n;let s=setTimeout(()=>{t.classList.remove("elementor-invisible"),t.classList.add("animated",n),this._removeAnimationSettings(t,e)},i);window.addEventListener("rocket-startLoading",function(){clearTimeout(s)})}_listAnimationSettingsKeys(t="mobile"){const e=[""];switch(t){case"mobile":e.unshift("_mobile");case"tablet":e.unshift("_tablet");case"desktop":e.unshift("_desktop")}const i=[];return["animation","_animation"].forEach(t=>{e.forEach(e=>{i.push(t+e)})}),i}_removeAnimationSettings(t,e){this._listAnimationSettingsKeys().forEach(t=>delete e[t]),t.dataset.settings=JSON.stringify(e)}static run(){const t=new RocketElementorAnimation;requestAnimationFrame(t._detectAnimations.bind(t))}}document.addEventListener("DOMContentLoaded",RocketElementorAnimation.run);</script></body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1698373228 -->
