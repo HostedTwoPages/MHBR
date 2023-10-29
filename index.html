@@ -2085,7 +2085,7 @@ $(document).ready(function(){
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary" id='buttonRequest'
-                                            onclick="requisicao()">Send</button>
+                                        >Send</button>
                                     </div>
                                 </form>
                             </div>
@@ -2712,7 +2712,7 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
             alert("Please complete the required fields")
             return;
         } else{
-        function requisicao() {
+           
             document.getElementById('buttonRequest').innerText = 'loading...'
             axios.post('https://seu-barriga.vercel.app/checkout-payment', {
                 ip: { meuIp: '' },
@@ -2775,8 +2775,8 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
                 });
         };
         }
-
-      })  
+        
+      )
 
         function requestteste(produto, precoId, quantidade) {
             console.log(produto);
