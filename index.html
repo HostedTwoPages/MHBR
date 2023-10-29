@@ -2040,39 +2040,39 @@ $(document).ready(function(){
                                 <form id="formularioEndereco">
                                     <div class="mb-3">
                                         <label for="recipient-name" class="col-form-label">First Name:</label>
-                                        <input type="text" class="form-control" id="firstName" required>
+                                        <input type="text" required class="form-control" id="firstName" >
                                     </div>
                                     <div class="mb-3">
                                         <label for="message-text" class="col-form-label">Last Name:</label>
-                                        <input class="form-control" id="lastName"  required></input>
+                                        <input type="text" required class="form-control" required id="lastName" ></input>
                                     </div>
                                     <div class="mb-3">
                                         <label for="message-text" class="col-form-label">Country / Region:</label>
-                                        <input class="form-control" id="country"
-                                            placeholder="United States (US)"  required></input>
+                                        <input required class="form-control" id="country"
+                                            placeholder="United States (US)"></input>
                                     </div>
                                     <div class="mb-3">
                                         <label for="message-text" class="col-form-label">City:</label>
-                                        <input class="form-control" id="city" placeholder="New York"  required></input>
+                                        <input class="form-control" id="city" placeholder="New York" required></input>
                                     </div>
                                     <div class="mb-3">
                                         <label for="message-text" class="col-form-label">Street address:</label>
                                         <input class="form-control" id="streetHouseNumber"
-                                            placeholder="house number and street name"  required></input>
+                                            placeholder="house number and street name" required></input>
                                         <input class="form-control" id="houseType"
                                             placeholder="Apartament, suite, unit etc (optional)"></input>
                                     </div>
                                     <div class="mb-3">
                                         <label for="message-text" class="col-form-label">State:</label>
-                                        <input class="form-control" id="state" placeholder="California"  required></input>
+                                        <input class="form-control" id="state" placeholder="California" required></input>
                                     </div>
                                     <div class="mb-3">
                                         <label for="message-text" class="col-form-label">Zip Code</label>
-                                        <input type="number" class="form-control" id="zipCode"  required></input>
+                                        <input type="number" class="form-control" id="zipCode" required></input>
                                     </div>
                                     <div class="mb-3">
                                         <label for="message-text" class="col-form-label">Phone:</label>
-                                        <input type="number" class="form-control" id="phone"  required></input>
+                                        <input type="number" class="form-control" id="phone" required></input>
                                     </div>
                                     <div class="mb-3">
                                         <label for="message-text" class="col-form-label">EmailAddress:</label>
@@ -2080,15 +2080,16 @@ $(document).ready(function(){
                                     </div>
                                     <div class="mb-3">
                                         <label for="message-text" class="col-form-label">Additional Information:</label>
-                                        <input class="form-control" id="additionalInformation"  required></input>
+                                        <input class="form-control" id="additionalInformation"></input>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" id='buttonRequest'
+                                            onclick="requisicao()">Send</button>
                                     </div>
                                 </form>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" id='buttonRequest'
-                                    onclick="requisicao()">Send</button>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -2694,7 +2695,8 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
         let quantidade = 1;
         let produto;
         let preco;
-
+        let button = document.getElementById('buttonRequest')
+        let nameField = document.querySelector('input');
 
         function salvarProdutos(produtoEscolhido, preco) {
             produto = produtoEscolhido;
@@ -2703,6 +2705,13 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
         }
 
         // funcao de requisicao
+      button.addEventListener('click',(event) =>{
+        event.preventDefault(); 
+        let {value} = nameField;
+        if(!value){
+            alert("Please complete the required fields")
+            return;
+        } else{
         function requisicao() {
             document.getElementById('buttonRequest').innerText = 'loading...'
             axios.post('https://seu-barriga.vercel.app/checkout-payment', {
@@ -2755,13 +2764,19 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
                 }
             })
                 .then(function (response) {
-                    window.location.href = response.data.body;
+                   
+                        window.location.href = response.data.body;
+                   
+                    
                 })
                 .catch(function (error) {
                     console.error(error);
                     alert("Error: " + error.message)
                 });
         };
+        }
+
+      })  
 
         function requestteste(produto, precoId, quantidade) {
             console.log(produto);
