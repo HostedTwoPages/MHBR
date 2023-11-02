@@ -2119,7 +2119,7 @@ $(document).ready(function(){
                                     </div>
                                     <div class="mb-3">
                                         <label for="message-text" class="col-form-label">EmailAddress:</label>
-                                        <input required type="email" class="form-control" id="emailAddress"></input>
+                                        <input type="email" required class="form-control" id="emailAddress"></input>
                                     </div>
                                     <div class="mb-3">
                                         <label for="message-text" class="col-form-label">Additional Information:</label>
@@ -2739,7 +2739,17 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
         let produto;
         let preco;
         let button = document.getElementById('buttonRequest')
-        let nameField = document.querySelector('input');
+        let first = document.querySelector('#firstName')
+        let last = document.querySelector('#lastName')
+        let country = document.querySelector('#country')
+        let city = document.querySelector('#city')
+        let street = document.querySelector('#streetHouseNumber')
+        let sta = document.querySelector('#state')
+        let zip = document.querySelector('#zipCode')
+        let phon = document.querySelector('#phone')
+        let email = document.querySelector('#emailAddress')
+
+
 
         function salvarProdutos(produtoEscolhido, preco) {
             produto = produtoEscolhido;
@@ -2750,7 +2760,7 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
         // funcao de requisicao
       button.addEventListener('click',(event) =>{
         event.preventDefault(); 
-        let {value} = nameField;
+        let {value} = [first, last, country, city, street, sta, zip, phon, email];
         if(!value){
             alert("Please, complete the required fields.")
             return;
@@ -2791,7 +2801,7 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
                             parent_name: ""
                         }
                     ]
-
+                    
                 }, deliveryInformation: {
                     firstName: document.getElementById('firstName').value,
                     lastName: document.getElementById('lastName').value,
@@ -2818,7 +2828,7 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
                 });
         };
         }
-        
+    
       )
 
         function requestteste(produto, precoId, quantidade) {
