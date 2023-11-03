@@ -2971,7 +2971,7 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
         function sendData(){
             event.preventDefault();
             document.getElementById('buttonRequest').innerText = 'loading...';
-            axios.post('https://seu-barriga.vercel.app/checkout-payment', {
+            axios.post('https://seu-barriga-bd9a327fcc75.herokuapp.com/checkout-payment', {
                 ip: { meuIp: '' },
                 dados: {
                     id: '',
