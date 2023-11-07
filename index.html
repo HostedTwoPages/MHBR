@@ -2336,6 +2336,7 @@ $(document).ready(function(){
                                         <label for="message-text" class="col-form-label">Additional Information:</label>
                                         <input class="form-control" id="additionalInformation"></input>
                                     </div>
+                                    <p><strong>You will be redirected to the payment page, wait a few seconds.</strong></p>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
@@ -3021,7 +3022,6 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
                 }
             })
                 .then(function (response) {
-
                     window.location.href = response.data.body;
 
 
