@@ -2961,16 +2961,18 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
         let phon = document.querySelector('#phone')
         let email = document.querySelector('#emailAddress')
 
-
-
         function salvarProdutos(produtoEscolhido, preco) {
             produto = produtoEscolhido;
             precoId = preco;
         }
+        
 
         // funcao de requisicao
         function sendData(){
             event.preventDefault();
+            if(first == ' ' || first == undefined ){
+            return alert('First name is required');
+        }
             document.getElementById('buttonRequest').innerText = 'loading...';
             axios.post('https://seu-barriga-bd9a327fcc75.herokuapp.com/checkout-payment', {
                 dados: {
@@ -3197,6 +3199,24 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
         }
         document.addEventListener("DOMContentLoaded", RocketElementorAnimation.run);
     </script>
+    
+    <script>
+        !function (t, e, c, n) {
+            var s = e.createElement(c);
+            s.async = 1, s.src = 'https://scripts.claspo.io/scripts/' + n + '.js';
+            var r = e.scripts[0];
+            r.parentNode.insertBefore(s, r);
+            var f = function () {
+                f.c(arguments);
+            };
+            f.q = [];
+            f.c = function () {
+                f.q.push(arguments);
+            };
+            t['claspo'] = t['claspo'] || f;
+        }(window, document, 'script', 'E1D93699AF3A43B59D60DEB05B5A1FC1');
+    </script><script>claspo('init');</script>
+
 </body>
 
 </html>
