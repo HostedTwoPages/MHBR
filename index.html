@@ -2297,7 +2297,7 @@ $(document).ready(function(){
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form id="formularioEndereco" onsubmit="sendData()">
+                                <form id="formularioEndereco" onsubmit="gateway()">
                                     <div class="mb-3">
                                         <label for="recipient-name" class="col-form-label">First Name: *</label>
                                         <input type="text" required class="form-control" id="firstName">
@@ -2971,6 +2971,12 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
         function salvarProdutos(produtoEscolhido, preco) {
             produto = produtoEscolhido;
             precoId = preco;
+        }
+
+        function gateway(){
+            document.getElementById('btnPagar').onclick = sendData();
+            document.getElementById('btnPagar2').onclick = sendData2();
+            document.getElementById('btnPagar3').onclick = sendData3();
         }
         
 
