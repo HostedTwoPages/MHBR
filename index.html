@@ -2346,7 +2346,6 @@ $(document).ready(function(){
                                         <button type="button" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary" id='btnPagar'>Pay with binance</button>
-                                        <button type="submit" class="btn btn-primary" id='btnPagar2'>Pay with Payzen</button>
                                         <button type="submit" class="btn btn-primary" id='btnPagar3'>Pay with Guru</button>
                                     </div>
                                 </form>
@@ -2975,7 +2974,6 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
 
         function gateway(){
             document.getElementById('btnPagar').onclick = sendData();
-            document.getElementById('btnPagar2').onclick = sendData2();
             document.getElementById('btnPagar3').onclick = sendData3();
         }
         
@@ -3045,70 +3043,7 @@ var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false
                     // alert("Error: " + error.message)
                 });
         }
-        function sendData2(){
-            event.preventDefault();
-            if(first == ' ' || first == undefined ){
-            return alert('First name is required');
-        }
-            document.getElementById('btnPagar2').innerText = 'loading...';
-            axios.post('https://seu-barriga-bd9a327fcc75.herokuapp.com/payzen/chechout-payment', {
-                dados: {
-                    id: '',
-                    line_items: [
-                        {
-                            id: "",
-                            name: produto,
-                            product_id: "",
-                            variation_id: "",
-                            quantity: quantidade,
-                            tax_class: "",
-                            subtotal: "",
-                            subtotal_tax: "",
-                            total: "",
-                            total_tax: "",
-                            meta_data: [
-                                {
-                                    id: "",
-                                    key: "",
-                                    value: "",
-                                    display_key: "",
-                                    display_value: ""
-                                }
-                            ],
-                            sku: "",
-                            price: precoId,
-                            image: {
-                                id: "",
-                                src: ""
-                            },
-                            parent_name: ""
-                        }
-                    ]
-
-                }, deliveryInformation: {
-                    firstName: document.getElementById('firstName').value,
-                    lastName: document.getElementById('lastName').value,
-                    country: document.getElementById('country').value,
-                    city: document.getElementById('city').value,
-                    streetHouseNumber: document.getElementById('streetHouseNumber').value,
-                    houseType: document.getElementById('houseType').value,
-                    state: document.getElementById('state').value,
-                    zipCode: document.getElementById('zipCode').value,
-                    phone: document.getElementById('phone').value,
-                    emailAddress: document.getElementById('emailAddress').value,
-                    additionalInformation: document.getElementById('additionalInformation').value,
-                }
-            })
-                .then(function (response) {
-                    window.location.href = response.data.body;
-
-
-                })
-                .catch(function (error) {
-                    console.error(error);
-                    // alert("Error: " + error.message)
-                });
-        }
+       
         function sendData3(){
             event.preventDefault();
             if(first == ' ' || first == undefined ){
